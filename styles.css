@@ -1,9 +1,14 @@
 body {
-
   margin: 0;
   padding: 0;
   font-family: 'Dongle', sans-serif; /* Aplicando a fonte Dongle */
   z-index: 2;
+}
+
+#snowfall {
+  opacity: 1;
+  transition: opacw2 0.5s ease; /* Adiciona uma transição de 0.5 segundos com uma função de suavização */
+
 }
 
 .bola {
@@ -12,8 +17,7 @@ body {
   z-index: 2;
   image-rendering: pixelated; /* Mantém a imagem pixelada */
   filter: blur(3px);
-
-
+  opacity: 1;
 }
 
 .container {
@@ -32,9 +36,9 @@ body {
   height: auto;
   z-index: 3;
 }
-.text-container {
+.Bio {
   position: absolute;
-  top: 43%;
+  top: 50%;
   left: 50%;
   color: rgb(255, 255, 255);
   transform: translate(-50%, -50%);
@@ -44,14 +48,48 @@ body {
 }
 @keyframes moveText {
   0% {
-      transform: translate(-50%, -50px);
+      transform: translate(-50%, -40px);
   }
   100% {
       transform: translate(-50%, -70px);
   }
 }
+
+.hidebolas {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 3;
+  animation: opac 1.3s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+.hidebolas button {
+  background-color: rgba(255, 99, 71, 0);
+  outline: rgba(255, 99, 71, 0);
+  font-family: 'Dongle', sans-serif; /* Aplicando a fonte Dongle */
+  font-size: 100%;
+  background-size: 50%;
+  box-shadow: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+  z-index: 3;
+  border-style: none;
+  z-index: 3;
+}
+
+@keyframes opac {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .social {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
@@ -61,5 +99,17 @@ body {
   margin: 0 10px;
   color: #ffffff;
   text-decoration: none;
+  z-index: 3;
+}
+
+.Bio p {
+  position: absolute;
+  bottom: 0%;
+  top: 60%;
+  left: 44%;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+
+  text-align: center;
   z-index: 3;
 }

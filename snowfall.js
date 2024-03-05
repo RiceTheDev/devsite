@@ -1,14 +1,14 @@
 var options = {
   // Quantidade de bolinhas
-  ballCount: 20,
+  ballCount: 10,
   // Velocidade mínima da queda das bolinhas (em pixels por segundo)
-  minFallSpeed: 3000,
+  minFallSpeed: 5000,
   // Velocidade máxima da queda das bolinhas (em pixels por segundo)
-  maxFallSpeed: 7000,
+  maxFallSpeed: 8000,
   // Tamanho das bolinhas (em pixels)
   ballSize: 20, // Tamanho das bolinhas
   // Frames por segundo
-  fps: 15
+  fps: 10
 };
 
 // Função para criar uma bolinha
