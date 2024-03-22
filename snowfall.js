@@ -1,55 +1,40 @@
 var options = {
-  // Quantidade de bolinhas
-  ballCount: 10,
-  // Velocidade mínima da queda das bolinhas (em pixels por segundo)
-  minFallSpeed: 5000,
-  // Velocidade máxima da queda das bolinhas (em pixels por segundo)
-  maxFallSpeed: 8000,
-  // Tamanho das bolinhas (em pixels)
-  ballSize: 20, // Tamanho das bolinhas
-  // Frames por segundo
-  fps: 10
+    ballCount: 10,
+    minFallSpeed: 5000,
+    maxFallSpeed: 8000,
+    ballSize: 20,
+    fps: 10
 };
 
-// Função para criar uma bolinha
 function createBall() {
-  var ball = document.createElement('img');
-  ball.src = 'bola.png'; // Caminho para a imagem
-  ball.classList.add('bola');
-  var size = options.ballSize + 'px';
-  ball.style.width = size;
-  ball.style.height = size;
-  ball.style.bottom = '100%'; // Começa acima da janela visível
-  ball.style.left = Math.random() * (window.innerWidth - options.ballSize) + 'px'; // Posição inicial aleatória
-  document.getElementById('snowfall').appendChild(ball);
+    var ball = document.createElement('img');
+    ball.src = 'bola.png';
+    ball.classList.add('bola');
+    var size = options.ballSize + 'px';
+    ball.style.cssText = `width: ${size}; height: ${size}; bottom: 100%; left: ${Math.random() * (window.innerWidth - options.ballSize)}px;`;
+    document.getElementById('snowfall').appendChild(ball);
 
-  var fallSpeed = Math.random() * (options.maxFallSpeed - options.minFallSpeed) + options.minFallSpeed;
-  var frameCount = fallSpeed / 1000 * options.fps;
-  var distancePerFrame = (window.innerHeight + parseInt(size)) / frameCount;
+    var fallSpeed = Math.random() * (options.maxFallSpeed - options.minFallSpeed) + options.minFallSpeed;
+    var frameCount = fallSpeed / 1000 * options.fps;
+    var distancePerFrame = (window.innerHeight + options.ballSize) / frameCount;
 
-  // Animação de queda das bolinhas
-  var currentFrame = 0;
-  var fallInterval = setInterval(function () {
-      currentFrame++;
-      if (currentFrame <= frameCount) {
-          var bottomPosition = (100 - currentFrame / frameCount * 100) + '%';
-          ball.style.bottom = bottomPosition;
-      } else {
-          clearInterval(fallInterval);
-          ball.parentNode.removeChild(ball);
-          createBall(); // Reinicia a queda
-      }
-  }, 1000 / options.fps);
-
-  return ball;
+    var currentFrame = 0;
+    var fallInterval = setInterval(function () {
+        currentFrame++;
+        if (currentFrame <= frameCount) {
+            ball.style.bottom = `${(100 - currentFrame / frameCount * 100)}%`;
+        } else {
+            clearInterval(fallInterval);
+            ball.remove();
+            createBall();
+        }
+    }, 1000 / options.fps);
 }
 
-// Inicialização do efeito de bolinhas
 function initSnowfall() {
-  for (var i = 0; i < options.ballCount; i++) {
-      setTimeout(createBall, Math.random() * 5000); // Cria as bolinhas com um atraso aleatório
-  }
+    for (var i = 0; i < options.ballCount; i++) {
+        setTimeout(createBall, Math.random() * 5000);
+    }
 }
 
-// Iniciar o efeito de bolinhas quando a página carregar
 window.onload = initSnowfall;
