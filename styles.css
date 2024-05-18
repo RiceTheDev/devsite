@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Quicksand:wght@300..700&display=swap');
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Dongle', sans-serif; /* Aplicando a fonte Dongle */
+  font-family: 'Quicksand';
   z-index: 2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; 
+}
+
+.background{
+  transform: scale(1.23);
 }
 
 #snowfall {
@@ -41,10 +52,14 @@ body {
   top: 50%;
   left: 50%;
   color: rgb(255, 255, 255);
+  height: 100px;
+
+  text-align: center;
   transform: translate(-50%, -50%);
   text-align: center;
-  animation: moveText 1.5s ease-in-out infinite alternate;
+  animation: moveText 1s steps(5) infinite alternate;
   z-index: 3;
+  font-size: 11px;
 }
 @keyframes moveText {
   0% {
@@ -57,31 +72,30 @@ body {
 
 .hidebolas {
   position: fixed;
+  margin-top: 10px;
   bottom: 25px;
   left: 50%;
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+  animation: opac 1s steps(6) infinite alternate;
   transform: translateX(-50%);
-  color: white;
-  z-index: 3;
-  animation: opac 1.3s ease-in-out infinite alternate;
   z-index: 3;
 }
 
 .hidebolas button {
-  background-color: rgba(255, 99, 71, 0);
-  outline: rgba(255, 99, 71, 0);
-  font-family: 'Dongle', sans-serif; /* Aplicando a fonte Dongle */
-  font-size: 100%;
-  background-size: 50%;
-  box-shadow: rgba(255, 255, 255, 0);
-  color: rgb(255, 255, 255);
-  z-index: 3;
-  border-style: none;
-  z-index: 3;
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #ffffff;
+  font-family: 'Quicksand';
+  font-size: 11px;
+  padding: 0 0;
+  
 }
 
 @keyframes opac {
   0% {
-    opacity: 1;
+    opacity: 0.5;
   }
   100% {
     opacity: 0;
@@ -96,20 +110,36 @@ body {
   z-index: 3;
 }
 .social a {
-  margin: 0 10px;
+  margin: 0 5px;
   color: #ffffff;
+  font-size: 10px;
   text-decoration: none;
   z-index: 3;
 }
 
 .Bio p {
   position: absolute;
-  bottom: 0%;
-  top: 60%;
-  left: 44%;
-  font-size: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  top: 20%;
+  margin-top: 23px;
+  text-align: center; /* Centraliza o texto horizontalmente */
+  font-size: 13px;
   color: rgb(255, 255, 255);
-
-  text-align: center;
   z-index: 3;
+  opacity: 50%;
+}
+
+.circle {
+  z-index: 99999;
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 1px solid white;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
 }

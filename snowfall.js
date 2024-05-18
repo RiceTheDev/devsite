@@ -2,7 +2,7 @@ var options = {
     ballCount: 10,
     minFallSpeed: 5000,
     maxFallSpeed: 8000,
-    ballSize: 20,
+    ballSize: 13,
     fps: 10
 };
 
